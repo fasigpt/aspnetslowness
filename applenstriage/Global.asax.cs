@@ -16,6 +16,20 @@ namespace applenstriage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, eventArgs) =>
+            {
+                System.Diagnostics.Debug.WriteLine("exception");
+            };
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            System.Diagnostics.Debug.WriteLine(exception);
+            // Response.Redirect("/Home/Error");
+        }
+
+
     }
 }

@@ -74,7 +74,7 @@ namespace applenstriage.Controllers
 
         public ActionResult cpu()
         {
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 2001; i++)
             {
                 CreateThreads();
             }
@@ -107,7 +107,7 @@ namespace applenstriage.Controllers
             return View();
         }
 
-
+        [HandleError(View = "Index")]
         public ActionResult Crash()
         {
             ViewBag.Message = $"Your contact {"page"}.";
